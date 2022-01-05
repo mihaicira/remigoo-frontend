@@ -1,0 +1,115 @@
+.selectDay>input{
+    text-align: center;
+
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    outline: none;
+    color: var(--color3);
+    background: var(--color2);
+
+    border: none;
+    border-radius: 10px;
+
+
+    font-size: 1.5rem !important;
+}
+
+.selectDay>input:active,
+.selectDay>input:focus{
+    outline: 3px solid var(--color1);
+}
+
+.selectDay-results{
+    --width: 70vw;
+    width: var(--width);
+    margin-left: calc((98vw - var(--width))/2);
+    margin-top: 20px;
+    padding: 1vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 40px;
+    min-height: 5cm;
+
+    background: var(--color1);
+}
+
+.selectDay-results>h2>i{
+    color: var(--color4);
+}
+
+.selectDay-results>h2{
+    text-align: center;
+    color: var(--color3);
+
+    font-weight: normal;
+}
+.selectDay-results>h4{
+    text-align: center;
+    color: var(--color4);
+
+    font-weight: normal;
+}
+
+.selectDay-list-of-results{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.selectDay-list-of-results>p{
+    color: var(--color4);
+}
+
+.selectDay-movie{
+    border-left: 8px solid var(--color2);
+    border-radius: 5px;
+
+    width: 80%;
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.selectDay-movie>img{
+    width: 20%;
+}
+
+.selectDay-movie-info{
+    width: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+
+    text-align: center;
+    color: var(--color3);
+}
+
+.selectDay-movie-info>p:nth-of-type(1){
+    /*    movie title & year*/
+    /*    FONTSIZE*/
+    font-size: 1.5rem;
+}
+
+.selectDay-movie-info>p:nth-of-type(2){
+    /*    movie genre and duration*/
+    /*    FONTSIZE*/
+    font-size: .8rem;
+}
+
+.selectDay-movie-hours{
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color3);
+}

@@ -1,0 +1,32 @@
+.information h2{
+    font-style: italic;
+}
+
+.information{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 200px;
+}
+
+.information a{
+    color: var(--color2);
+}
+
+.information .text{
+    color: var(--color2);
+}
+
+.information iframe{
+    height: 30vh;
+    width: 40vw;
+
+    border-radius: 20px;
+    border: none;
+}
+
+.information>hr{
+    height: 3px;
+    background: linear-gradient(to right,transparent 20%,var(--color1) 40% 60%,transparent 80%);
+    border: none;
+}
+

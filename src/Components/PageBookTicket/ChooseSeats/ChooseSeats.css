@@ -1,0 +1,71 @@
+.choose-seats-container>p{
+    color: var(--color4);
+    margin: 5px;
+    font-weight: bold;
+}
+
+.choose-seats-container>.smaller-p{
+    color: var(--color4);
+    margin: 2px;
+    font-weight: bold;
+    text-align: left;
+    font-size: .8rem;
+    display: flex;
+    gap: 10px;
+}
+.choose-seats-container>.smaller-p>span{
+    font-weight: bold;
+}
+
+.choose-seats-container>button{
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin-top: 20px;
+    opacity: 1;
+    background: transparent;
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+    pointer-events: initial;
+}
+
+.disabled-refresh-btn{
+    opacity: 0;
+    pointer-events: none !important;
+}
+
+.choose-seats-container>button>img{
+    width: 100%;
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+}
+
+
+
+.choose-seats-container>button>img:hover{
+    transform: scale(.8);
+}
+
+.choose-seats-canvas{
+    margin-top: 10px;
+    width: 80%;
+    text-align: center;
+}
+
+.choose-seats-canvas>svg{
+    width: 80%;
+    border-radius: 10px;
+}
+
+.choose-seats-canvas #rows>g>g{
+    cursor: pointer;
+}
+
+.unavailable-seat{
+    cursor: initial !important;
+}

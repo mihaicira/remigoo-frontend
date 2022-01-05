@@ -1,0 +1,36 @@
+.loading-animation{
+    width: 10vh;
+    margin-top: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+#loading-right{
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: 2s rotateLeft linear infinite;
+}
+
+#loading-left{
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: 2s rotateRight linear infinite;
+}
+
+@keyframes rotateLeft {
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes rotateRight {
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(-360deg);
+    }
+}

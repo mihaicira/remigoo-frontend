@@ -1,0 +1,29 @@
+.defaultButton{
+    background: var(--color2);
+    color: var(--color3);
+
+    outline: none;
+    border: none;
+
+    font-weight: bold;
+
+    border-radius: 20px;
+
+    padding: 10px;
+
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+
+    cursor: pointer;
+}
+
+.defaultButton:active,
+.defaultButton:focus{
+    outline: 2px solid var(--color3);
+}
+
+.defaultButton:hover{
+    transform: scale(.9);
+}

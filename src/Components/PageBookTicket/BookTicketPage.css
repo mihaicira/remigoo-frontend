@@ -1,0 +1,55 @@
+.book-page-container{
+    background: var(--color1);
+
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    padding: 10px 0 20px 0;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/*movie name*/
+.book-page-container>h2{
+    color: var(--color3);
+}
+
+
+/*buttons*/
+.book-page-container>.buttons-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+
+}
+
+.buttons-container>img{
+    width: 7vw;
+
+    transition: 500ms;
+    -o-transition: 500ms;
+    -moz-transition: 500ms;
+    -webkit-transition: 500ms;
+    cursor: pointer;
+}
+
+.buttons-container>img:hover{
+    transform: scale(.9);
+}
+
+.disabled-book-btn{
+    pointer-events: none;
+    opacity: .3;
+}
+
+.invisible-book-btn{
+    pointer-events: none;
+    opacity: 0;
+}

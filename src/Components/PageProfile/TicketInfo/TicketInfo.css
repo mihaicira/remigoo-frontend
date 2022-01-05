@@ -1,0 +1,12 @@
+.account-section-nothing-here{
+    color: red;
+}
+
+
+.account-section ul{
+    color: var(--color4)
+}
+
+.account-section a{
+    color: var(--color3);
+}

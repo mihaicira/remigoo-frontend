@@ -1,0 +1,93 @@
+.account-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    gap: 150px;
+    flex-wrap: wrap;
+
+}
+
+.ticket-section{
+    padding: 50px 5% 50px 5%;
+}
+
+.account-buttons>button{
+    outline: none;
+    border: none;
+    background: var(--color4);
+    border-radius: 15px;
+
+    font-weight: bold;
+    font-size: 1.15rem;
+
+    cursor: pointer;
+
+
+    min-width: 250px;
+    padding: 30px 0 30px 0;
+
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+}
+.account-buttons>button:hover{
+    background: white;
+
+}
+
+
+/*forms*/
+
+.account-form,.account-submitted{
+    margin-top: 100px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 15px;
+
+
+    padding: 20px 40px 20px 40px;
+
+    color: var(--color1);
+    background: var(--color4);
+
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    gap: 15px;
+}
+
+.account-submitted{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.account-form>label{
+    font-weight: bold;
+
+}
+.account-form>input{
+    outline: none;
+
+    border: none;
+    border-radius: 5px;
+    background: var(--color1);
+    padding: 5px 0 5px 0;
+    text-align: center;
+    color: var(--color4);
+    width: 100%;
+}
+.account-form>button{
+    align-self: center;
+}
+@media screen and (max-width: 900px) {
+    .account-form{
+        width: 80%;
+    }
+}

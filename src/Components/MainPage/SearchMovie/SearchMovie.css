@@ -1,0 +1,84 @@
+
+.searchMovie>input{
+    width: 50vw;
+    margin-left: 25vw;
+
+    font-weight: bold;
+    padding: 6px 0 6px 0;
+
+    text-align: center;
+
+    outline: none;
+    color: var(--color3);
+    background: var(--color1);
+
+    border: none;
+    border-radius: 10px;
+}
+
+.searchMovie-willbeplayed{
+    background: var(--color4);
+    color: var(--color1);
+
+    text-align: center;
+
+    font-weight: bold;
+    padding: 20px !important;
+
+    border-radius: 10px;
+    position: relative;
+
+}
+.searchMovie-willbeplayed>button{
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+    z-index: 100;
+}
+
+
+.searchMovie-willbeplayed>span{
+    position: absolute;
+    width: inherit;
+    left: 0;
+    right: 0;
+    bottom: 25px;
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+    transform:scale(0) ;
+    opacity: 0;
+}
+
+.searchMovie-willbeplayed li{
+    text-align: left;
+}
+
+@media only screen and (max-width: 800px) {
+    .selectDay-results{
+        width: 100%;
+        margin-left: 0;
+    }
+    .selectDay-movie-info>p:nth-of-type(1){
+        /*    movie title & year*/
+        /*    FONTSIZE*/
+        font-size: 1rem;
+    }
+
+    .selectDay-movie-info>p:nth-of-type(2){
+        /*    movie genre and duration*/
+        /*    FONTSIZE*/
+        font-size: .6rem;
+    }
+
+    .searchMovie-willbeplayed{
+        padding: 10px !important;
+
+    }
+
+    .searchMovie-willbeplayed *{
+        font-size: .8rem !important;
+    }
+}

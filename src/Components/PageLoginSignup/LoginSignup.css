@@ -1,0 +1,82 @@
+.login-signup-form-container{
+    background: var(--color1);
+
+    width: 25vh;
+
+    text-align: center;
+
+    padding: 20px 50px 50px 50px;
+    border-radius: 10px;
+
+    margin-left: 50%;
+    margin-top: 30px;
+    transform: translateX(-50%);
+}
+
+.login-signup-form-container h2{
+    color: var(--color3);
+    margin-bottom: 40px;
+}
+
+.login-signup-form-container label{
+    color: var(--color3);
+}
+
+.login-signup-form-container input{
+    background: var(--color4);
+    border: none;
+    width: 100%;
+    height: 3ch;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login-signup-form-container input:focus,
+.login-signup-form-container input:active{
+    outline: 2px solid var(--color3);
+}
+
+.login-signup-form-container a{
+    color: var(--color4);
+    align-self: center;
+}
+
+.login-signup-form-container form{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-signup-form-container button{
+    align-self: center;
+}
+
+#account-error{
+    align-self: center;
+    max-width: inherit;
+    line-break: loose;
+    color: var(--color2);
+    font-weight: bold;
+    text-align: center;
+
+    /*outline: 2px solid red;*/
+    height: 5ch;
+
+
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+}
+
+.signup-additional-text{
+    margin-top: 5vh;
+    text-align: center;
+    color: var(--color1);
+
+    width: 40vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}

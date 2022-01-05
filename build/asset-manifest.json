@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/remigoo/static/css/main.83aa8fcf.chunk.css",
+    "main.js": "/remigoo/static/js/main.ec6105e4.chunk.js",
+    "main.js.map": "/remigoo/static/js/main.ec6105e4.chunk.js.map",
+    "runtime-main.js": "/remigoo/static/js/runtime-main.bca56c28.js",
+    "runtime-main.js.map": "/remigoo/static/js/runtime-main.bca56c28.js.map",
+    "static/js/2.dd2a1c9f.chunk.js": "/remigoo/static/js/2.dd2a1c9f.chunk.js",
+    "static/js/2.dd2a1c9f.chunk.js.map": "/remigoo/static/js/2.dd2a1c9f.chunk.js.map",
+    "static/js/3.74afa50a.chunk.js": "/remigoo/static/js/3.74afa50a.chunk.js",
+    "static/js/3.74afa50a.chunk.js.map": "/remigoo/static/js/3.74afa50a.chunk.js.map",
+    "index.html": "/remigoo/index.html",
+    "static/css/main.83aa8fcf.chunk.css.map": "/remigoo/static/css/main.83aa8fcf.chunk.css.map",
+    "static/js/2.dd2a1c9f.chunk.js.LICENSE.txt": "/remigoo/static/js/2.dd2a1c9f.chunk.js.LICENSE.txt",
+    "static/media/back-arrow.f954d253.svg": "/remigoo/static/media/back-arrow.f954d253.svg",
+    "static/media/PanelPage.css": "/remigoo/static/media/back-btn.666ac333.svg",
+    "static/media/book-ticket-arrow.350c8474.svg": "/remigoo/static/media/book-ticket-arrow.350c8474.svg",
+    "static/media/continue-arrow.42a595b0.svg": "/remigoo/static/media/continue-arrow.42a595b0.svg",
+    "static/media/example-movie-image.8855b0ec.jpg": "/remigoo/static/media/example-movie-image.8855b0ec.jpg",
+    "static/media/how-to.5101c215.svg": "/remigoo/static/media/how-to.5101c215.svg",
+    "static/media/navbar-logo.ec5dd456.png": "/remigoo/static/media/navbar-logo.ec5dd456.png",
+    "static/media/panel-movies.5f52aa72.svg": "/remigoo/static/media/panel-movies.5f52aa72.svg",
+    "static/media/panel-tickets.90c611fd.svg": "/remigoo/static/media/panel-tickets.90c611fd.svg",
+    "static/media/refresh-icon.66c6402e.svg": "/remigoo/static/media/refresh-icon.66c6402e.svg",
+    "static/media/remigoo-vid.0bb416e8.mp4": "/remigoo/static/media/remigoo-vid.0bb416e8.mp4",
+    "static/media/Ticket.css": "/remigoo/static/media/ticket-background.b43949da.svg",
+    "static/media/waste-basket.e4f40a1b.svg": "/remigoo/static/media/waste-basket.e4f40a1b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bca56c28.js",
+    "static/js/2.dd2a1c9f.chunk.js",
+    "static/css/main.83aa8fcf.chunk.css",
+    "static/js/main.ec6105e4.chunk.js"
+  ]
+}
