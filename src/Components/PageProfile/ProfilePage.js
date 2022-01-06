@@ -15,9 +15,10 @@ function ProfilePage(props) {
     const [ageCategory,setAgeCategory] = useState(null)
 
     async function GetUserRequest(email){
-        const response = await fetch(`http://localhost:3000/?type=getuser&email_address=${email}`)
+        const response = await fetch(`http://localhost:3000/getuser?email_address=${email}`)
         const data = await response.json();
         setUserdata(data.content)
+        setAgeCategory(data.content.userAgeCategory)
         return data;
     }
 
@@ -33,8 +34,7 @@ function ProfilePage(props) {
     }
 
     useEffect(()=>{
-        setAgeCategory("pensionary")
-
+        console.log(AccountData)
         async function effectFunction(){
             const storageData = JSON.parse(localStorage.getItem("loginStatus"))
             if(!storageData.isLoggedIn){
@@ -52,7 +52,11 @@ function ProfilePage(props) {
 
     const changeAgeCategory = (newCategory) =>{
         setAgeCategory(newCategory)
-        // fetch(`http://localhost:3000/?type=getuser&email_address=${email}`)
+        let acc = AccountData
+        acc.userAgeCategory = newCategory
+        AccountDataUpdate(acc)
+        // console.log(`http://localhost:3000/change-age-category?id=${AccountData.userData.userId}&age_category=${newCategory}`)
+        fetch(`http://localhost:3000/change-age-category?id=${AccountData.userData.userId}&age_category=${newCategory}`)
     }
 
     return (

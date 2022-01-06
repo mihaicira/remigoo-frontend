@@ -31,6 +31,31 @@ function BookTicketPage() {
             })
     }
 
+
+    const finalizeBooking = async () =>{
+        let name;
+        ticketList.forEach(ticket=>{
+            if(ticket.name!==''){
+                name = ticket.name;
+                return;
+            }
+        })
+
+        let query = `http://localhost:3000/add-ticket?name=${name}&id=${scheduleId}`
+        selectedSeats.forEach(seat=>{
+            let numbers = seat.split('-')
+            query = query + `&seats=${numbers[0]*numbers[1]}`
+        })
+        console.log(query)
+
+
+        // const response = await fetch(`http://localhost:3000/getTrending`)
+        // response.json()
+        //     .then(res=>{
+        //         setData(res) D   D
+        //     })
+    }
+
     useEffect(()=>{
         loadData()
 
@@ -84,7 +109,8 @@ function BookTicketPage() {
                     scheduleId={scheduleId}
                     schedule={schedule}
                     setSchedule={setSchedule}
-                    DBMovie={DBMovie}/>
+                    DBMovie={DBMovie}
+                    finalizeBooking={finalizeBooking}/>
             }
 
             {

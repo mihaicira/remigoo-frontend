@@ -34,7 +34,7 @@ function SelectTickets(props) {
                 owner:true,
                 id: AccountData.userData.userId,
                 name:AccountData.userData.userName,
-                type:null
+                type:AccountData.userData.ageCategory
             })
         else
             tempList.shift()
@@ -57,7 +57,7 @@ function SelectTickets(props) {
             owner:false,
             id: key,
             name:"",
-            type:"DEFAULT"
+            type: AccountData.userData ? AccountData.userData.ageCategory : "DEFAULT"
         })
 
         props.changeTicketList(tempList)

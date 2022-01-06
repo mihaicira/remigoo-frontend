@@ -47,12 +47,14 @@ function LoginPage() {
             return;
         }
 
+        console.log(response.content)
         AccountDataUpdate({
             isLoggedIn: true,
             userData: {
                 userId: response.content.userId,
                 userName: response.content.userName,
                 userEmail: response.content.userEmail,
+                ageCategory: response.content.userAgeCategory,
                 token: response.content.token
             }
         })

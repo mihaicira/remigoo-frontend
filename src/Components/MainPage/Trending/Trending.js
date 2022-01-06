@@ -23,7 +23,6 @@ const Results = ()=>{
 
     useEffect(()=>{
         setData({})
-        console.log("helo")
         loadData();
         return ()=>{};
     },[])
@@ -32,9 +31,6 @@ const Results = ()=>{
         navigate(`/book/${id}`)
     }
 
-
-    if(data.content)
-        console.log(data.content)
 
     // if(isDateInPast(value))
     //     return <p>date is in past</p>

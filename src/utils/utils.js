@@ -11,8 +11,7 @@ export const validateEmail = (email)=> {
 }
 
 export async function LoginRequest(obj){
-    //    email,password
-    console.log(`http://localhost:3000/login?email_address=${obj.email}&password=${obj.password}`)
+    //email,password
     const response = await fetch(`http://localhost:3000/login?email_address=${obj.email}&password=${obj.password}`)
     return await response.json()
 
@@ -35,18 +34,18 @@ export const isDateInPast = (date)=>{
 
 export const monthNumberToString = (number) =>{
     const months = {
-        1:"January",
-        2:"February",
-        3:"March",
-        4:"April",
-        5:"May",
-        6:"June",
-        7:"July",
-        8:"August",
-        9:"September",
-        10:"October",
-        11:"November",
-        12:"December",
+        '01':"January",
+        '02':"February",
+        '03':"March",
+        '04':"April",
+        '05':"May",
+        '06':"June",
+        '07':"July",
+        '08':"August",
+        '09':"September",
+        '10':"October",
+        '11':"November",
+        '12':"December",
     }
     return months[number];
 }

@@ -67,7 +67,7 @@ function DateTime(props) {
                     <h3>Select an hour</h3>
                     <div className="hour-results">
                         {
-                            props.selectedDay &&
+                            (props.selectedDay && Object.entries(mySchedule).length) &&
                                 mySchedule[props.selectedDay].map(schedule=><p key={`hour-${schedule.time}-${schedule.scheduleId}`} className={schedule.time === props.selectedHour ? "picker-result active-picked-result" : "picker-result"} onClick={()=>{props.changeSelectedHour(schedule.time);props.setScheduleId(schedule.scheduleId)}}>{schedule.time}</p>)
                         }
                     </div>

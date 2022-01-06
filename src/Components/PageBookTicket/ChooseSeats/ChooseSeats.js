@@ -12,7 +12,7 @@ function ChooseSeats(props) {
         [0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,1]
+        [0,0,0,0,0,0,0,0,0,0,0,0]
     ])
 
 
@@ -117,6 +117,11 @@ function ChooseSeats(props) {
     const goBackwardsHandler = () => {
         props.changeSelectedSeats([])
         props.backwards()
+    }
+
+    const finalizeBooking = () =>{
+
+        // props.forward()
     }
 
     useEffect(()=>{
@@ -894,7 +899,7 @@ function ChooseSeats(props) {
 
             <div className="buttons-container">
                 <img src={BackArrow} alt="back-arrow" onClick={goBackwardsHandler}/>
-                <img src={BookTicketArrow} alt="book-ticket-arrow" className={(props.numberOfTickets===props.selectedSeats.length) ? "" : "disabled-book-btn"} onClick={props.forward}/>
+                <img src={BookTicketArrow} alt="book-ticket-arrow" className={(props.numberOfTickets===props.selectedSeats.length) ? "" : "disabled-book-btn"} onClick={props.finalizeBooking}/>
             </div>
         </div>
     );

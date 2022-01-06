@@ -9,85 +9,98 @@ import LoadingAnimation from "../../LoadingAnimation/LoadingAnimation";
 import axios from "axios";
 import {beautifyMinutes, monthNumberToString} from "../../../utils/utils";
 import HeaderText from "../../HeaderText/HeaderText";
+import {useNavigate} from "react-router-dom";
 
 
 var Timeout;
 
 //SCHEDULED MOVIES
+const MoviesByDayResults = ({value})=>{
+    const [data, setData] = useState({});
+
+    const loadData = async () =>{
+        const response = await fetch(`http://localhost:3000/get-movies-by-date?date=${value}`)
+        response.json()
+            .then(res=>{
+                setData(res)
+            })
+    }
+
+
+    useEffect(()=>{
+        setData({})
+        loadData();
+        return ()=>{};
+    },[value])
+
+    if(value === "")
+        return <p>Select a date</p>
+
+    if(data.content){
+        const hours = ['08:00','10:30','13:00','18:00','20:30','23:00']
+        let hall_1 = {}
+        let hall_2 = {}
+        hours.forEach((hour)=>{
+            hall_1[hour] = "No movie scheduled."
+            hall_2[hour] = "No movie scheduled."
+        })
+
+        if(!(typeof data.content === "string"))
+            data.content.forEach(movie=> {
+                movie.time.split(', ').forEach(time => {
+                    hours.forEach(hour => {
+                        if (time.split('-')[0] === hour) {
+                            if(time.split('-')[1]=='1')
+                                hall_1[hour] = movie.title
+                            else
+                                hall_2[hour] = movie.title
+                        }
+                    })
+                })
+            })
+
+
+
+        return <>
+            <div className="hall-container">
+                <h3>Hall 1</h3>
+                <div className="hall-results">
+                    {
+                        Object.keys(hall_1).map(hour=><div className="hall-result" key={`hall-1-${hour}`}>
+                            <p>{hour}</p>
+                            <p>{hall_1[hour]}</p>
+                        </div>)
+                    }
+                </div>
+            </div>
+
+            <div className="hall-container">
+                <h3>Hall 2</h3>
+                <div className="hall-results">
+                    {
+                        Object.keys(hall_2).map(hour=><div className="hall-result" key={`hall-2-${hour}`}>
+                            <p>{hour}</p>
+                            <p>{hall_2[hour]}</p>
+                        </div>)
+                    }
+                </div>
+            </div>
+
+        </>
+    }
+    else
+        return <LoadingAnimation/>
+
+
+}
+
 const ScheduledMovies = () =>{
+    const [selectedDay,changeSelectedDay] = useState('')
     return(<div className="panel-section movie-section">
             <h2>Scheduled movies</h2>
-            <input type="date"/>
+            <input type="date" onChange={(ev)=>{changeSelectedDay(ev.target.value)}}/>
             <div className="results">
-                <div className="hall-container">
-                    <h3>Hall 1</h3>
-                    <div className="hall-results">
-                        <div className="hall-result">
-                            <p>08:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>10:30</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>13:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>18:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>20:30</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>23:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="hall-container">
-                    <h3>Hall 2</h3>
-                    <div className="hall-results">
-                        <div className="hall-result">
-                            <p>08:00</p>
-                            <p>Dumb ways to die Dumb ways to die (2020)</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>10:30</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>13:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>18:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>20:30</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-
-                        <div className="hall-result">
-                            <p>23:00</p>
-                            <p>Dumb ways to die</p>
-                        </div>
-                    </div>
-                </div>
+                <MoviesByDayResults value={selectedDay}/>
             </div>
         </div>
     )
@@ -98,8 +111,9 @@ const ScheduledMovies = () =>{
 const ScheduleMovieTitleMatches = ({value,titleChange})=>{
     const [data, setData] = useState({});
     const loadData = async () =>{
-        const res = await fetch(`https://api.agify.io/?name=${value}`)
-        setData(await res.json());
+        const res = await fetch(`http://localhost:3000/get-movies?title=${value}`)
+        const data = await res.json()
+        setData(data)
     }
 
     useEffect(()=>{
@@ -117,20 +131,14 @@ const ScheduleMovieTitleMatches = ({value,titleChange})=>{
     if(value === "")
         return ""
 
-    if(data.name)
+    if(data.content)
         return <div className="schedule-movies-matches">
-            <div onClick={()=>{titleChangeHandler("My little doggie doo (2055)",122)}}>
-                <img src={ExampleImage} alt="example-img"/>
-                <span>My little doggie doo (2055)</span>
-            </div>
-            <div onClick={()=>{titleChangeHandler("Dumb ways to die (2023)",133)}}>
-                <img src={ExampleImage} alt="example-img"/>
-                <span>Dumb ways to die (2023)</span>
-            </div>
-            <div onClick={()=>{titleChangeHandler("Lorem ipsum dolor sit amet (1999)",144)}}>
-                <img src={ExampleImage} alt="example-img"/>
-                <span>Lorem ipsum dolor sit amet (1999)</span>
-            </div>
+            {
+                data.content.map(movie=><div onClick={()=>{titleChangeHandler(`${movie.title} (${movie.year})`,movie.id)}} key={`movie-match-${movie.title}`}>
+                    <img src={movie.img} alt={`movie-match-${movie.title}`}/>
+                    <span>{movie.title} ({movie.year})</span>
+                </div>)
+            }
         </div>
     else
         return <LoadingAnimation/>
@@ -142,6 +150,7 @@ const ScheduleMovieHourMatches = ({value,changeHour})=>{
 
 
     const loadData = async () =>{
+        // http://localhost:3000/get-available-hours-by-date?date=2022-01-25
         const res = await fetch(`https://api.agify.io/?name=${value}`)
         setData(await res.json());
     }
