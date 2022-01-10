@@ -3,6 +3,7 @@ import BackArrow from "../../../assets/back-arrow.svg";
 import ContinueArrow from "../../../assets/continue-arrow.svg";
 import WasteBasket from "../../../assets/waste-basket.svg";
 import Button from "../../Button/Button";
+import {useEffect,useState} from 'react';
 import {useAccountData} from '../../AccountContext/AccountProvider';
 
 function areAllTicketsCompleted(tickets){
@@ -21,6 +22,7 @@ function areAllTicketsCompleted(tickets){
 }
 
 function SelectTickets(props) {
+    const [prices,setPrices] = useState(null)
     const AccountData = useAccountData()
 
     const deleteTicket = (id) =>{
@@ -68,6 +70,12 @@ function SelectTickets(props) {
         props.backwards()
     }
 
+    useEffect(()=>{
+        const id = props.scheduleId;
+        const DBprices = props.DBMovie.schedule.find(obj=>obj.id===id).prices
+        setPrices(DBprices)
+    },[])
+
     return (
         <div className="book-page-container">
             {
@@ -77,11 +85,17 @@ function SelectTickets(props) {
             <h3>Book your tickets</h3>
 
             <div className="price-list">
-                <p>Price list</p>
-                <p>Standard ......... 3€</p>
-                <p>Child (&lt; 14 years old) ......... 3€</p>
-                <p>Student ......... €e</p>
-                <p>Pensionary ......... 3€</p>
+                {
+                    prices &&
+                        <>
+                            <p>Price list</p>
+                            <p>Standard ......... {prices.split('/')[0]}€</p>
+                            <p>Child (&lt; 14 years old) ......... {prices.split('/')[1]}€</p>
+                            <p>Student ......... {prices.split('/')[2]}€</p>
+                            <p>Pensionary ......... {prices.split('/')[3]}€</p>
+                        </>
+                }
+
             </div>
 
             {

@@ -1,5 +1,4 @@
 import "./SearchMovie.css";
-import ExampleImage from "../../../assets/example-movie-image.jpg";
 import {beautifyMinutes, monthNumberToString} from "../../../utils/utils";
 import Button from "../../Button/Button";
 import LoadingAnimation from "../../LoadingAnimation/LoadingAnimation";
@@ -50,7 +49,7 @@ const Results = ({value})=>{
         return ""
 
 
-    if(data.code==21)
+    if(data.code===21)
         return <div className="selectDay-results">
             <h2>We can't find any movies matching the title <i>{value}</i>.</h2>
             <h4>Though, you can suggest it, so we can add it later!</h4>
@@ -69,7 +68,6 @@ const Results = ({value})=>{
             <div className="selectDay-list-of-results">
                 {
                     data.content.map(movie => <div className="selectDay-movie" key={"searched-movie-"+movie.id}>
-                        {/*<img src={`data:image/png;base64,${movie.img}`} alt={"image-of-"+movie.title}/>*/}
                         <img src={movie.img} alt={"image-of-"+movie.title}/>
                         <div className="selectDay-movie-info">
                             <p>{movie.title} ({movie.year})</p>

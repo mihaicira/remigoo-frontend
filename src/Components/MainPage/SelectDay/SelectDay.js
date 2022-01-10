@@ -13,10 +13,8 @@ const Results = ({value})=>{
 
     const loadData = async () =>{
         const response = await fetch(`http://localhost:3000/get-movies-by-date?date=${value}`)
-        console.log(`http://localhost:3000/get-movies-by-date?date=${value}`)
         response.json()
             .then(res=>{
-                console.log("Response: ",res)
                 setData(res)
             })
     }
@@ -60,7 +58,7 @@ const Results = ({value})=>{
                         <div className="selectDay-movie-hours">
                             <ul>
                                 {
-                                    times.map(time=><li key={`movie-${movie.title}-time-${time}`}>{time}</li>)
+                                    times.map(time=><li key={`movie-${movie.title}-time-${time}`}>{time.split('-')[0]}</li>)
                                 }
                             </ul>
                         </div>

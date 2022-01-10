@@ -44,7 +44,7 @@ const SearchTicketResult = ({value})=>{
             <p>Hall:  {data.content.hall}</p>
             <br/>
             <p>Tickets:  {data.content.seats.length};</p>
-            <p>Price: 23e;</p>
+            <p>Price: {data.content.price}€;</p>
         </div>
     }
     else

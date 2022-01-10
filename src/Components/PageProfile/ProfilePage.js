@@ -13,6 +13,7 @@ function ProfilePage(props) {
     const navigate = useNavigate();
     const [userData,setUserdata] = useState({})
     const [ageCategory,setAgeCategory] = useState(null)
+    const [tickets,setTickets] = useState(null)
 
     async function GetUserRequest(email){
         const response = await fetch(`http://localhost:3000/getuser?email_address=${email}`)
@@ -29,12 +30,11 @@ function ProfilePage(props) {
             navigate('/')
 
         setUserdata(response.content)
+        setTickets(response.content.tickets)
 
-        console.log("User refreshed. Response:",response.content)
     }
 
     useEffect(()=>{
-        console.log(AccountData)
         async function effectFunction(){
             const storageData = JSON.parse(localStorage.getItem("loginStatus"))
             if(!storageData.isLoggedIn){
@@ -79,7 +79,12 @@ function ProfilePage(props) {
 
             </div>
 
-            <TicketInfo/>
+            {
+                tickets &&
+                <TicketInfo tickets={Object.keys(tickets).length === 0 ? null : tickets}/>
+            }
+
+
 
             <HeaderText text={`Account data`}/>
             <AccountDataSection name={userData.userName} email={userData.userEmail} id={userData.userId} refreshUser={refreshUser}/>

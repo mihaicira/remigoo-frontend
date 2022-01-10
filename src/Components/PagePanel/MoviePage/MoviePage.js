@@ -108,33 +108,37 @@ const ScheduledMovies = () =>{
 
 
 //SCHEDULE A MOVIE
-const ScheduleMovieTitleMatches = ({value,titleChange})=>{
+const ScheduleMovieTitleMatches = ({value, titleChange}) => {
+
     const [data, setData] = useState({});
-    const loadData = async () =>{
+    const loadData = async () => {
         const res = await fetch(`http://localhost:3000/get-movies?title=${value}`)
         const data = await res.json()
         setData(data)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setData({})
         loadData();
-        return ()=>{};
-    },[value])
+        return () => {
+        };
+    }, [value])
 
-    const titleChangeHandler = (name,id)=>{
-        titleChange(name,id)
+    const titleChangeHandler = (name, id) => {
+        titleChange(name, id)
         // resetHour()
         // document.getElementById("schedule-movie-search-date-input").value="";
     }
 
-    if(value === "")
+    if (value === "")
         return ""
 
-    if(data.content)
+    if (data.content)
         return <div className="schedule-movies-matches">
             {
-                data.content.map(movie=><div onClick={()=>{titleChangeHandler(`${movie.title} (${movie.year})`,movie.id)}} key={`movie-match-${movie.title}`}>
+                data.content.map(movie => <div onClick={() => {
+                    titleChangeHandler(`${movie.title}`, movie.id)
+                }} key={`movie-match-${movie.title}`}>
                     <img src={movie.img} alt={`movie-match-${movie.title}`}/>
                     <span>{movie.title} ({movie.year})</span>
                 </div>)
@@ -142,7 +146,7 @@ const ScheduleMovieTitleMatches = ({value,titleChange})=>{
         </div>
     else
         return <LoadingAnimation/>
-}
+};
 
 const ScheduleMovieHourMatches = ({value,changeHour})=>{
     const [data, setData] = useState({});
@@ -150,9 +154,9 @@ const ScheduleMovieHourMatches = ({value,changeHour})=>{
 
 
     const loadData = async () =>{
-        // http://localhost:3000/get-available-hours-by-date?date=2022-01-25
-        const res = await fetch(`https://api.agify.io/?name=${value}`)
-        setData(await res.json());
+        const res = await fetch(`http://localhost:3000/get-available-hours-by-date?date=${value}`)
+        const resData = await res.json()
+        setData(resData);
     }
 
     useEffect(()=>{
@@ -170,23 +174,14 @@ const ScheduleMovieHourMatches = ({value,changeHour})=>{
     if(value === "")
         return ""
 
-    if(data.name)
+    if(!data.error)
         return <div className="schedule-hours-matches">
-            <div onClick={(e)=>{changeHourHandler("1");}} className={activeHour==="schedule-hour-1" ? "selected-schedule-hours-match" : ""}>
-                <span>1</span>
-            </div>
-
-            <div onClick={(e)=>{changeHourHandler("2");}} className={activeHour==="schedule-hour-2" ? "selected-schedule-hours-match" : ""}>
-                <span>2</span>
-            </div>
-
-            <div onClick={(e)=>{changeHourHandler("3");}} className={activeHour==="schedule-hour-3" ? "selected-schedule-hours-match" : ""}>
-                <span>3</span>
-            </div>
-
-            <div onClick={(e)=>{changeHourHandler("4");}} className={activeHour==="schedule-hour-4" ? "selected-schedule-hours-match" : ""}>
-                <span>4</span>
-            </div>
+            {
+                data.content &&
+                data.content.hall_1.map(hour=><div key={`hour-${hour}`} onClick={(e)=>{changeHourHandler(hour);}} className={activeHour===`schedule-hour-${hour}` ? "selected-schedule-hours-match" : ""}>
+                    <span>{hour}</span>
+                </div>)
+            }
         </div>
     else
         return <LoadingAnimation/>
@@ -236,10 +231,22 @@ const ScheduleMovie = () =>{
         changeSelectedHour("")
     }
 
-    const validateForm = (e)=>{
+    const validateForm = async (e)=>{
 
         if(movieTitle!=='' && selectedDay!=='' && selectedHour!=='' && hall !== 0){
             e.preventDefault()
+            const prices = `${standardPrice}/${childPrice}/${studentPrice}/${pensionaryPrice}`
+            const movtit = movieTitle.replaceAll(" ","%20")
+            // req.query.movie_title, req.query.hall, req.query.time, req.query.date,req.query.id, req.query.prices, req.query.movie_id);
+            const query = `http://localhost:3000/schedule-movie?movie_title=${movtit}&hall=${hall}&time=${selectedHour}&date=${selectedDay}&prices=${prices}&movie_id=${movieId}`
+            console.log(query)
+            const response = await fetch(query)
+            response.json()
+                .then(res=>{
+                    console.log(res)
+                    if(!res.error)
+                        alert("The movie has been scheduled.")
+                })
         }
     }
 
@@ -421,9 +428,6 @@ const SearchMovieResults = ({value})=>{
                             <div className="search-movie-subsection">
                                 <h5>Suggests: {movie.suggestions ? movie.suggestions : 0}</h5>
                                 <Button text="Reset suggests" event={()=>{resetSuggestions(movie.id)}}/>
-                            </div>
-                            <div className="search-movie-subsection">
-                                <Button text="Remove from system"/>
                             </div>
                         </div>
                     )}

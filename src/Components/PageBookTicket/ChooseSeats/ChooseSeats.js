@@ -119,38 +119,21 @@ function ChooseSeats(props) {
         props.backwards()
     }
 
-    const finalizeBooking = () =>{
-
-        // props.forward()
-    }
-
     useEffect(()=>{
         let mySchedule = props.DBMovie.schedule.find(i=>i.id==props.scheduleId)
         props.setSchedule( mySchedule)
+
 
         let mySeats = fetchedSeats
 
         for(let i = 0 ; i <mySchedule.tickets.length ; i++)
             if(mySchedule.tickets[i] !== 0)
-                mySeats[Math.floor(i/12)][i%12] = 1
+                mySeats[Math.floor((i+1)/12)][(i+1)%12] = 1
 
         setFetchedSeats(mySeats)
 
         renderCanvas()
     })
-
-    // useEffect(()=>{
-    //     let mySchedule = props.DBMovie.schedule.find(i=>i.id==props.scheduleId)
-    //     props.setSchedule( mySchedule)
-    //
-    //     let mySeats = fetchedSeats
-    //
-    //     for(let i = 0 ; i <mySchedule.tickets.length ; i++)
-    //         if(mySchedule.tickets[i] !== 0)
-    //             mySeats[Math.floor(i/12)][i%12] = 1
-    //
-    //     setFetchedSeats(mySeats)
-    // },[])
 
     return (
         <div className="book-page-container choose-seats-container">

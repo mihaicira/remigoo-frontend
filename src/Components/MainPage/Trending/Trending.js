@@ -69,7 +69,7 @@ const Results = ()=>{
             </>
         }
         else
-            return <p>There is no trending.</p>
+            return <p></p>
     else
         return <LoadingAnimation/>
 
